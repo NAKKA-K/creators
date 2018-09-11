@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help run migrate
+.PHONY: help run migrate migrate/fresh c
 
 help: Makefile
 	@cat Makefile
@@ -10,3 +10,9 @@ run:
 
 migrate:
 	php artisan migrate
+
+migrate/fresh:
+	php artisan migrate:fresh --seed
+
+c:
+	php artisan tinker
