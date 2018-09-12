@@ -15,7 +15,7 @@ class CreateEventsTable extends Migration
     {
         Schema::create('events', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name');
+            $table->string('name', 127);
             $table->string('description');
             $table->string('readme');
             $table->boolean('published');
