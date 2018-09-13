@@ -14,6 +14,7 @@ class EventsTableSeeder extends Seeder
     {
         DB::table('events')->insert([
             [
+                'user_id' => 1,
                 'name' => 'Test Event',
                 'description' => 'test',
                 'readme' => 'test',

@@ -4,6 +4,7 @@ use Faker\Generator as Faker;
 
 $factory->define(App\Event::class, function (Faker $faker) {
     return [
+        'user_id' => $faker->randomDigit() + 1,
         'name' => $faker->sentence($nbWords = 5, $variableNbWords = false),
         'description' => $faker->sentence($nbWords = 10, $variableNbWords = true),
         'readme' => $faker->realText($maxNbChars = 255, $indexSize = 2),
