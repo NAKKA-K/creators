@@ -17,5 +17,7 @@ class UsersTableSeeder extends Seeder
             'password' => bcrypt('password'),
             'role_id' => \App\Role::ADMIN
         ]);
+
+        factory(App\User::class, 10)->create();
     }
 }
