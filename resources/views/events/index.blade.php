@@ -11,9 +11,9 @@
             @foreach($events as $event)
                 <div class="card border-secondary mb-2">
                     <div class="card-header">
-                        <a href="#"><h4>{{ $event->name }}</h4></a>
+                        <a href="{{ route('events.show', ['event' => $event]) }}"><h4>{{ $event->name }}</h4></a>
                         <div class="small text-muted">
-                            <a href="#" class="text-secondary">{{ $event->user->name }}</a>
+                            <a href="{{ route('users.show', ['user' => $event->user]) }}" class="text-secondary">{{ $event->user->name }}</a>
                             &nbsp;&nbsp;
                             {{ $event->created_at }}
                         </div>
