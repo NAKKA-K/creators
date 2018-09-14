@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help run migrate migrate/fresh c
+.PHONY: help run migrate migrate/fresh c routes
 
 help: Makefile
 	@cat Makefile
@@ -16,3 +16,6 @@ migrate/fresh:
 
 c:
 	php artisan tinker
+
+routes:
+	php artisan route:list
