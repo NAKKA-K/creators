@@ -1,18 +1,22 @@
 @extends('layouts.app')
 
+@section('style')
+<link href="{{ asset('/css/user_profile_fonts.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 class="mt-4 mb-4 mr-2">{{ $user->name }} Profile</h1>
+            <h1 class="mt-4 mb-4 mr-2 user-font">{{ $user->name }}</h1>
 
             <!-- tab -->
             <ul class="nav nav-tabs mb-4">
                 <li class="nav-item">
-                    <a href="#create_tab" class="nav-link tab-font">Create</a>
+                    <a href="#create_tab" class="nav-link tab-font" data-toggle="tab">Create</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#join_tab" class="nav-link tab-font">Join</a>
+                    <a href="#join_tab" class="nav-link tab-font" data-toggle="tab">Join</a>
                 </li>
             </ul>
 
