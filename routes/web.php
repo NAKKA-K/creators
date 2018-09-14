@@ -14,9 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/home', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
 Route::resource('events', 'EventController');
+Route::resource('users', 'UserController')->only(['index', 'show']);
