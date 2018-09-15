@@ -1,0 +1,38 @@
+footer {
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid #eaeaea;
+  color: lightgray;
+
+  a {
+    color: gray;
+  }
+  a:hover {
+    color: darkgray;
+  }
+
+  .terms-of-use {
+    float: left;
+    list-style: none;
+    padding-left:0;
+
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+    li:first-child {
+      margin-left: 0;
+    }
+  }
+
+  .service-links {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+
+}
