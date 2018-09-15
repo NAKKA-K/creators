@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
 
     @yield('style')
 </head>
@@ -75,6 +76,15 @@
         <main class="py-4">
             @yield('content')
         </main>
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    @include('layouts.footer')
+                </div>
+            </div>
+        </div>
+
     </div>
 </body>
 </html>
