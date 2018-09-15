@@ -61,5 +61,7 @@
         </div>
     </div>
 </div>
+
+@include('shared.event_delete_modal')
 @endsection
 
