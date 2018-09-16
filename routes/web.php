@@ -20,3 +20,4 @@ Auth::routes();
 
 Route::resource('events', 'EventController');
 Route::resource('users', 'UserController')->only(['index', 'show']);
+Route::resource('event_participants', 'EventParticipantController')->only(['index', 'store', 'destroy']);
