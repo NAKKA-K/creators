@@ -25,6 +25,8 @@ class CreateEventParticipantsTable extends Migration
             $table->foreign('event_id')
                 ->references('id')->on('events')
                 ->onDelete('cascade');
+
+            $table->unique(['user_id', 'event_id']);
         });
     }
 
