@@ -38,7 +38,7 @@
                     <a href="#detail_tab" class="nav-link tab-font active">Detail</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('event_participants.index', ['event' => $event]) }}" class="nav-link tab-font">
+                    <a href="{{ route('events.event_participants.index', ['event' => $event]) }}" class="nav-link tab-font">
                       Members <span class="badge badge-secondary">{{ $participantNum }}</span>
                     </a>
                 </li>
