@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use Illuminate\Http\Request;
+use Validator;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -25,7 +27,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.create');
     }
 
     /**
@@ -36,7 +38,22 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:127',
+            'description' => 'required|max:1023',
+            'readme' => 'required',
+        ]);
+
+        if($validator->fails()){
+            return back()->withErrors($validator)->withInput();
+        }
+
+        $event = new Event($request->all());
+        $event->user_id = Auth::id();
+        $event->published = true;
+        $event->save();
+
+        return redirect()->route('events.show', ['event' => $event]);
     }
 
     /**
