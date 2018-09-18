@@ -1,0 +1,48 @@
+@extends('layouts.app')
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+
+            <h1 class="mt-4 mb-4 ml-2">イベント作成</h1>
+
+            @if ($errors->any())
+                <div><ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul></div>
+            @endif
+
+            <form action="{{ route('events.store') }}" method="POST">
+                @csrf
+                <div class="form-group">
+                    <label class="col-sm-12">
+                        タイトル
+                        <input type="text" name="name" placeholder="Creatorの作成をしよう！" class="form-control form-control-lg">
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">
+                        イベント概要
+                        <textarea name="description" placeholder="いろんな言語を使って、Creatorの作成を体験してみましょう" class="form-control form-control-lg"></textarea>
+                    </label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-12">
+                        README
+                        <textarea name="readme" placeholder="使用する言語は自由です。各自いろんな言語でCreatorサービスを作成し、情報共有しましょう。" class="form-control form-control-lg"></textarea>
+                    </label>
+                </div>
+
+                <div class="float-right">
+                    <button type="submit" class="btn btn-primary btn-lg">作成</button>
+                    <a href="{{ route('events.index') }}" class="btn btn-secondary btn-lg">戻る</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@endsection
