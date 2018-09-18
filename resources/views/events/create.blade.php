@@ -7,32 +7,36 @@
 
             <h1 class="mt-4 mb-4 ml-2">イベント作成</h1>
 
-            @if ($errors->any())
-                <div><ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul></div>
-            @endif
-
             <form action="{{ route('events.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label class="col-sm-12">
                         タイトル
-                        <input type="text" name="name" placeholder="Creatorの作成をしよう！" class="form-control form-control-lg">
+                        <input type="text" name="name"
+                            placeholder="Creatorの作成をしよう！"
+                            value="{{ old('name') }}"
+                            class="form-control form-control-lg @if($errors->has('name')) is-invalid @endif" required>
+                        @errorsBlock($errors->get('name'))
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-12">
                         イベント概要
-                        <textarea name="description" placeholder="いろんな言語を使って、Creatorの作成を体験してみましょう" class="form-control form-control-lg"></textarea>
+                        <textarea name="description"
+                            placeholder="いろんな言語を使って、Creatorの作成を体験してみましょう"
+                            class="form-control form-control-lg @if($errors->has('description')) is-invalid @endif"
+                            required>{{ old('description') }}</textarea>
+                        @errorsBlock($errors->get('description'))
                     </label>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-12">
                         README
-                        <textarea name="readme" placeholder="使用する言語は自由です。各自いろんな言語でCreatorサービスを作成し、情報共有しましょう。" class="form-control form-control-lg"></textarea>
+                        <textarea name="readme"
+                            placeholder="使用する言語は自由です。各自いろんな言語でCreatorサービスを作成し、情報共有しましょう。"
+                            class="form-control form-control-lg @if($errors->has('readme')) is-invalid @endif"
+                            required>{{ old('description') }}</textarea>
+                        @errorsBlock($errors->get('readme'))
                     </label>
                 </div>
 
