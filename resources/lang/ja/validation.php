@@ -138,6 +138,8 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'password_confirmation' => 'パスワード（確認）',
-        'name' => 'ユーザー名'
+        'name' => '名前',
+        'description' => '概要',
+        'readme' => 'Read me',
     ],
 ];
