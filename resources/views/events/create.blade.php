@@ -35,7 +35,7 @@
                         <textarea name="readme"
                             placeholder="使用する言語は自由です。各自いろんな言語でCreatorサービスを作成し、情報共有しましょう。"
                             class="form-control form-control-lg @if($errors->has('readme')) is-invalid @endif"
-                            required>{{ old('description') }}</textarea>
+                            required>{{ old('readme') }}</textarea>
                         @errorsBlock($errors->get('readme'))
                     </label>
                 </div>
