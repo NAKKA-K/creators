@@ -69,19 +69,22 @@ class EventController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+        return view('events.edit', ['event' => $event]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\EventPost  $request
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(EventPost $request, Event $event)
     {
-        //
+        $validated = $request->validated();
+
+        Event::where('id', $event->id)->update($validated->all());
+        return redirect()->route('events.show', ['event' => $event]);
     }
 
     /**
