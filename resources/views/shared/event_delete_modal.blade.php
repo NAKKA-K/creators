@@ -14,7 +14,11 @@
             </div>
 
             <div class="modal-footer">
-                <a href="{{ route('events.destroy', ['event' => $event]) }}" class="btn btn-danger">削除</a>
+                <form action="{{ route('events.destroy', ['event' => $event]) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-danger">削除</a>
+                </form>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
             </div>
         </div>
