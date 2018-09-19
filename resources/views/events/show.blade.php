@@ -29,7 +29,7 @@
             @endif
 
             @if (Auth::check() && Auth::user() == $event->user)
-                <a href="{{ route('events.update', ['event' => $event]) }}" class="btn btn-primary btn-sm">更新</a>
+                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn btn-primary btn-sm">更新</a>
                 <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
             @endif
 
