@@ -50,8 +50,9 @@
                     <p>
                         参加メンバー&nbsp;&nbsp;{{ $participantNum }}人
                         @if ($event->user != $authUser && $joined)
-                            <form action="{{ route('events.event_participants.destroy', ['event' => $event, 'event_participant' => $joined]) }}" method="DELETE">
+                            <form action="{{ route('events.event_participants.destroy', ['event' => $event, 'event_participant' => $joined]) }}" method="POST">
                                 @csrf
+                                @method('DELETE')
                                 <button type="submit" class="btn btn-secondary btn-sm">離脱</button>
                             </form>
                         @elseif ($event->user != $authUser)
