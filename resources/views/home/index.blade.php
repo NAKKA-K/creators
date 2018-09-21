@@ -1,4 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.base')
+
+@section('header')
+    @include('layouts.header')
+@endsection
 
 @section('content')
 <header class="masthead text-center text-white d-flex">
