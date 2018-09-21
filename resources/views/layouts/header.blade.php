@@ -11,7 +11,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" role="button"
+                    <a id="navbar_dropdown" class="nav-link dropdown-toggle" role="button"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         href="#">HOME</a>
                     <div class="dropdown-menu" aria-labelledby="navbar_dropdown">
