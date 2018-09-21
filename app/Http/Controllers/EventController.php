@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventParticipant;
 use Illuminate\Http\Request;
 use App\Http\Requests\EventPost;
 use Validator;
@@ -57,7 +58,7 @@ class EventController extends Controller
      */
     public function show(Event $event)
     {
-        $num = \App\EventParticipant::where('event_id', $event->id)->count();
+        $num = EventParticipant::where('event_id', $event->id)->count();
         return view('events.show', ['event' => $event, 'participantNum' => $num]);
     }
 
