@@ -27,7 +27,7 @@
                     作成したイベントはみんなが見ることができ、参加することができます。
                     イベントを共有することで、モチベーションの維持や作ったものをみんなに見てもらうことができます。
                 </p>
-                <a href="{{ route('regester') }}" class="btn btn-light btn-xl">アカウントを登録</a>
+                <a href="{{ route('register') }}" class="btn btn-light btn-xl">アカウントを登録</a>
             </div>
         </div>
     </div>
