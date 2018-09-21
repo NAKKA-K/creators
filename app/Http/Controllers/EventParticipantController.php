@@ -10,6 +10,16 @@ use Illuminate\Support\Facades\Auth;
 class EventParticipantController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->except(['index']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @param  \App\Event  $event
@@ -21,7 +31,12 @@ class EventParticipantController extends Controller
         $participants = EventParticipant::where('event_id', $event->id)
             ->with('user')->get();
         $participantNum = $participants->count();
-        $joined = $participants->where('user_id', $authUser->id)->first();
+
+        $joined = null;
+        if($authUser){
+            $joined = $participants->where('user_id', $authUser->id)->first();
+        }
+
         return view('event_participants.index', [
             'authUser' => $authUser,
             'event' => $event,
@@ -40,7 +55,9 @@ class EventParticipantController extends Controller
      */
     public function store(Event $event, Request $request)
     {
-        //
+        $userID = Auth::id();
+        $participant = EventParticipant::firstOrCreate(['event_id' => $event->id, 'user_id' => $userID]);
+        return redirect()->route('events.event_participants.index', ['event' => $event]);
     }
 
     /**
@@ -52,6 +69,7 @@ class EventParticipantController extends Controller
      */
     public function destroy(Event $event, $id)
     {
-        //
+        EventParticipant::destroy($id);
+        return redirect()->route('events.event_participants.index', ['event' => $event]);
     }
 }
