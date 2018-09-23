@@ -13,6 +13,7 @@
 
 Route::name('home.')->group(function() {
     Route::get('', 'HomeController@index')->name('index');
+    Route::get('about/', 'HomeController@about')->name('about');
 });
 
 Auth::routes();
