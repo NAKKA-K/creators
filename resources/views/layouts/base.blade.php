@@ -48,9 +48,6 @@
 
 
     <!-- Plugin JavaScript -->
-    <script src="{{ asset('vendor/jquery/jquery.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}" defer></script>
-    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}" defer></script>
     <script src="{{ asset('vendor/scrollreveal/scrollreveal.min.js') }}" defer></script>
     <script src="{{ asset('vendor/magnific-popup/jquery.magnific-popup.min.js') }}" defer></script>
 
