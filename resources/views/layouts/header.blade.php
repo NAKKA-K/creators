@@ -16,7 +16,7 @@
                         href="#">HOME</a>
                     <div class="dropdown-menu" aria-labelledby="navbar_dropdown">
                         <a class="dropdown-item" href="{{ route('events.index') }}">イベント一覧</a>
-                        <a class="dropdown-item" href="#">WaZとは</a>
+                        <a class="dropdown-item" href="{{ route('home.about') }}">WaZとは</a>
                         <a class="dropdown-item" href="#">ガイドライン</a>
                     </div>
                 </li>
