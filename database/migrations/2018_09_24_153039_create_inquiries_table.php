@@ -16,8 +16,8 @@ class CreateInquiriesTable extends Migration
         Schema::create('inquiries', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('user_id');
-            $table->string('title', 127):
-            $table->string('body', 2047):
+            $table->string('title', 127);
+            $table->string('body', 2047);
             $table->timestamps();
 
             $table->foreign('user_id')
