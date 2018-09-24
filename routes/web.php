@@ -14,6 +14,10 @@
 Route::name('home.')->group(function() {
     Route::get('', 'HomeController@index')->name('index');
     Route::get('about/', 'HomeController@about')->name('about');
+    Route::get('guideline/', 'HomeController@guideline')->name('guideline');
+    Route::get('help/', 'HomeController@help')->name('help');
+    Route::get('privacy/', 'HomeController@privacy')->name('privacy');
+    Route::get('terms_of_service/', 'HomeController@termsOfService')->name('terms_of_service');
 });
 
 Auth::routes();
