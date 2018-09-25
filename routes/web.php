@@ -18,6 +18,8 @@ Route::name('home.')->group(function() {
     Route::get('help/', 'HomeController@help')->name('help');
     Route::get('privacy/', 'HomeController@privacy')->name('privacy');
     Route::get('terms_of_service/', 'HomeController@termsOfService')->name('terms_of_service');
+    Route::get('inquiries/', 'HomeController@inquiry')->name('inquiry');
+    Route::post('inquiries/', 'HomeController@storeInquiry')->name('store_inquiry');
 });
 
 Auth::routes();
