@@ -52,7 +52,7 @@ class EventController extends Controller
     {
         $validated = $request->validated();
 
-        $event = new Event($validated->all());
+        $event = new Event($validated);
         $event->user_id = Auth::id();
         $event->published = true;
         $event->save();
