@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-8">
 
-            <h1 class="mt-4 mb-4 ml-2">イベント作成</h1>
+            <h1 class="mb-4 ml-2">イベント作成</h1>
 
             <form action="{{ route('events.store') }}" method="POST">
                 @csrf
@@ -40,9 +40,9 @@
                     </label>
                 </div>
 
-                <div class="float-right">
-                    <button type="submit" class="btn btn-primary btn-lg">作成</button>
-                    <a href="{{ route('events.index') }}" class="btn btn-secondary btn-lg">戻る</a>
+                <div class="d-flex justify-content-end">
+                    <button type="submit" class="btn btn-primary btn-lg m-1">作成</button>
+                    <a href="{{ route('events.index') }}" class="btn btn-secondary btn-lg m-1">戻る</a>
                 </div>
             </form>
         </div>
