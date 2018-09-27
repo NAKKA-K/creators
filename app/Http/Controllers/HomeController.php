@@ -9,6 +9,10 @@ use App\Inquiry;
 
 class HomeController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->only(['inquiry', 'storeInquiry']);
+    }
+
     public function index(){
         return view('home.index');
     }
