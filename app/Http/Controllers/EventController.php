@@ -57,7 +57,7 @@ class EventController extends Controller
         $event->published = true;
         $event->save();
 
-        return redirect()->route('events.show', ['event' => $event]);
+        return redirect()->route('events.show', ['event' => $event])->with('イベントを作成しました');
     }
 
     /**
@@ -95,7 +95,7 @@ class EventController extends Controller
         $validated = $request->validated();
 
         Event::where('id', $event->id)->update($validated->all());
-        return redirect()->route('events.show', ['event' => $event]);
+        return redirect()->route('events.show', ['event' => $event])->with('イベントを更新しました');
     }
 
     /**
@@ -107,6 +107,6 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
-        return redirect()->route('events.index');
+        return redirect()->route('events.index')->with('イベントを削除しました');
     }
 }
