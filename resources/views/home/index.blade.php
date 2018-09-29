@@ -39,20 +39,9 @@
 
 <div class="container mt-4 mb-4">
     <h1 class="mt-4 mb-4 ml-2 mr-2 no-float text-center">最近のイベント</h1>
-    {{--
     @foreach($events as $event)
-        <div class="card border-secondary mv-2">
-            <a href="{{ route('events.show', ['event' => $event]) }}">
-                <h4 class="card-header">
-                    {{ $event->name }}
-                </h4>
-            </a>
-            <div class="card-body">
-                {{ $event->description }}
-            </div>
-        </div>
+        @include('shared/event_card')
     @endforeach
-     --}}
 </div>
 @endsection
 
