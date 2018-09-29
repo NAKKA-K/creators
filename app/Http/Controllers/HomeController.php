@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\InquiryPost;
 use App\Inquiry;
+use App\Event;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,10 @@ class HomeController extends Controller
     }
 
     public function index(){
-        return view('home.index');
+        $events = Event::orderBy('created_at', 'desc')
+                    ->with('user:id,name')
+                    ->limit(5)->get();
+        return view('home.index', ['events' => $events]);
     }
 
     public function about(){
