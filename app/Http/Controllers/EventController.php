@@ -57,6 +57,11 @@ class EventController extends Controller
         $event->published = true;
         $event->save();
 
+        EventParticipant::create([
+            'event_id' => $event->id,
+            'user_id' => Auth::id()
+        ]);
+
         return redirect()->route('events.show', ['event' => $event])->with('イベントを作成しました');
     }
 
