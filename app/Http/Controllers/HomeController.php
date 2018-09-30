@@ -5,14 +5,23 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\InquiryPost;
+use App\Http\Requests\OpinionPost;
 use App\Inquiry;
+use App\Opinion;
 use App\Event;
 use App\User;
 
 class HomeController extends Controller
 {
     public function __construct(){
-        $this->middleware('auth')->only(['inquiry', 'storeInquiry']);
+        $this->middleware('auth')->except([
+            'index',
+            'about',
+            'guideline',
+            'privacy',
+            'help',
+            'termsOfService',
+        ]);
     }
 
     public function index(){
@@ -54,6 +63,20 @@ class HomeController extends Controller
         $inquiry = new Inquiry($validated);
         $inquiry->user_id = Auth::id();
         $inquiry->save();
+
+        return redirect()->route('events.index');
+    }
+
+    public function opinion(){
+        return view('home.opinion');
+    }
+
+    public function storeOpinion(OpinionPost $request){
+        $validated = $request->validated();
+
+        $opinion = new Opinion($validated);
+        $opinion->user_id = Auth::id();
+        $opinion->save();
 
         return redirect()->route('events.index');
     }
