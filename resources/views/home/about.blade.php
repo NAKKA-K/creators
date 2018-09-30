@@ -103,11 +103,11 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-lg-6 col-md-12">
-                <h1>21{{-- eventNum --}}</h1>
-                <p>件のエベントが建てられました</p>
+                <h1>{{ $eventCount }}</h1>
+                <p>件のイベントが建てられました</p>
             </div>
             <div class="col-lg-6 col-md-12">
-                <h1>2{{-- userNum --}}</h1>
+                <h1>{{ $userCount }}</h1>
                 <p>人のユーザーが登録しています</p>
             </div>
         </div>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\InquiryPost;
 use App\Inquiry;
 use App\Event;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -22,7 +23,9 @@ class HomeController extends Controller
     }
 
     public function about(){
-        return view('home.about');
+        $eventCount = Event::count();
+        $userCount = User::count();
+        return view('home.about', ['eventCount' => $eventCount, 'userCount' => $userCount]);
     }
 
     public function guideline(){
