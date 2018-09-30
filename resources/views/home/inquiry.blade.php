@@ -13,7 +13,7 @@
                         タイトル
                         <input type="text" name="title"
                             placeholder=""
-                            value="{{ old('name') }}"
+                            value="{{ old('title') }}"
                             class="form-control @if($errors->has('title'))is-invalid @endif"
                             required>
                         @errorsBlock($errors->get('title'))
@@ -25,7 +25,7 @@
                         <textarea name="body"
                             placeholder=""
                             class="form-control @if($errors->has('body'))is-invalid @endif"
-                            required>{{ old('name') }}</textarea>
+                            required>{{ old('body') }}</textarea>
                         @errorsBlock($errors->get('body'))
                     </label>
                 </div>
