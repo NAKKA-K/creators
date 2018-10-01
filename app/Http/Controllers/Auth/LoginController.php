@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 class LoginController extends Controller
 {
@@ -35,5 +37,60 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function twitter(){
+        $twitter = new TwitterOAuth(
+            config('twitter.consumer_key'),
+            config('twitter.consumer_secret')
+        );
+
+        // get request_token
+        $token = $twitter->oauth('oauth/request_token', [
+            'oauth_callback' => config('twitter.callback_url')
+        ]);
+
+        // authenticate token
+        session([
+            'oauth_token' =>$token['oauth_token'],
+            'oauth_token_secret' => $token['oauth_token_secret'],
+        ]);
+
+        // go to authenticate page
+        $url = $twitter->url('oauth/authenticate', [
+            'oauth_token' => $token['oauth_token']
+        ]);
+
+        return redirect($url);
+    }
+
+    public function twitterCallback(Request $request){
+        $oauth_token = session('oauth_token');
+        $oauth_token_secret = session('oauth_token_secret');
+
+        if($request->has('oauth_token') && $oauth_token !== $request->oauth_token){
+            return redirect()->route('login');
+        }
+
+        $twitter = new TwitterOAuth(
+            $oauth_token,
+            $oauth_token_secret
+        );
+
+        // get access_token from request_token
+        $token = $twitter->oauth('oauth/access_token', [
+            'oauth_verifier' => $request->oauth_verifier,
+            'oauth_token' => $request->oauth_token,
+        ]);
+
+        $twitter_user = new TwitterOAuth(
+            config('twitter.consumer_key'),
+            config('twitter.consumer_secret'),
+            $token['oauth_token'],
+            $token['oauth_token_secret']
+        );
+
+        $twitter_user_info = $twitter_user->get('account/verify_credentials');
+        dd($twitter_user_info);
     }
 }

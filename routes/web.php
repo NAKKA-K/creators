@@ -28,6 +28,9 @@ Route::name('home.')->group(function() {
 
 Auth::routes();
 
+Route::get('login/twitter/', 'Auth\LoginController@twitter');
+Route::get('login/twitter/callback/', 'Auth\LoginController@twitterCallback');
+
 Route::resource('events', 'EventController');
 Route::resource('users', 'UserController')->only(['index', 'show']);
 Route::resource('events.event_participants', 'EventParticipantController')->only(['index', 'store', 'destroy']);
