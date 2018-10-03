@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Abraham\TwitterOAuth\TwitterOAuth;
+use Socialite;
 
 class LoginController extends Controller
 {
