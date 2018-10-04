@@ -28,8 +28,8 @@ Route::name('home.')->group(function() {
 
 Auth::routes();
 
-Route::get('login/twitter/', 'Auth\LoginController@twitter');
-Route::get('login/twitter/callback/', 'Auth\LoginController@twitterCallback');
+Route::get('login/twitter/', 'Auth\LoginController@redirectToProvider');
+Route::get('login/twitter/callback/', 'Auth\LoginController@handleProviderCallback');
 
 Route::resource('events', 'EventController');
 Route::resource('users', 'UserController')->only(['index', 'show']);
