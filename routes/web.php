@@ -29,9 +29,9 @@ Route::name('home.')->group(function() {
 Auth::routes();
 
 // OAuth routes
-Route::get('login/{provider}/', 'Auth\LoginController@redirectToProvider')
+Route::get('login/{provider}/', 'SocialAccountController@redirectToProvider')
     ->where('provider', '(github|twitter|facebook)');
-Route::get('login/{provider}/callback/', 'Auth\LoginController@handleProviderCallback')
+Route::get('login/{provider}/callback/', 'SocialAccountController@handleProviderCallback')
     ->where('provider', '(github|twitter|facebook)');
 
 Route::resource('events', 'EventController');
