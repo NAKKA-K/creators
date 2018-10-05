@@ -34,7 +34,7 @@ Route::get('login/{provider}/', 'SocialAccountController@redirectToProvider')
 Route::get('login/{provider}/callback/', 'SocialAccountController@handleProviderCallback')
     ->where('provider', '(github|twitter|facebook)');
 
-Route::get('mypage/', 'UserController@myPage');
+Route::get('mypage/', 'UserController@myPage')->name('mypage');
 Route::resource('events', 'EventController');
 Route::resource('users', 'UserController')->only(['index', 'show']);
 Route::resource('events.event_participants', 'EventParticipantController')->only(['index', 'store', 'destroy']);
