@@ -41,6 +41,6 @@ class UserController extends Controller
 
     public function myPage() {
         $user = Auth::user();
-        return view('users.my_page', ['user' => $user])
+        return view('users.my_page', ['user' => $user]);
     }
 }
