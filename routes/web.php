@@ -28,8 +28,11 @@ Route::name('home.')->group(function() {
 
 Auth::routes();
 
-Route::get('login/{provider}/', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback/', 'Auth\LoginController@handleProviderCallback');
+// OAuth routes
+Route::get('login/{provider}/', 'Auth\LoginController@redirectToProvider')
+    ->where('provider', '(github|twitter|facebook)');
+Route::get('login/{provider}/callback/', 'Auth\LoginController@handleProviderCallback')
+    ->where('provider', '(github|twitter|facebook)');
 
 Route::resource('events', 'EventController');
 Route::resource('users', 'UserController')->only(['index', 'show']);
