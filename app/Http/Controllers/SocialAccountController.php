@@ -17,23 +17,22 @@ class SocialAccountController extends Controller
     public function handleProviderCallback(string $provider){
         $user = Socialite::driver($provider)->user();
 
-        dd($user);
-
-        //Auth::login(getOrCreateSocialUser($user, $provider), true);
-        //return redirect()->route('events.index')
+        Auth::login($this->getOrCreateSocialUser($user, $provider), true);
+        return redirect()->route('events.index');
     }
 
     // create social_account & create user & return associated user
     private function getOrCreateSocialUser($socialUser, $provider){
-        $account = SocialAccount::firstOrCreate([
+        $account = SocialAccount::firstOrNew([
             'provider_id' => $socialUser->getId(),
             'provider' => $provider,
         ]);
 
         if(empty($account->user)){
             $user = User::create([
-                'name' => getDisplayName($socialUser, $provider), // Get nickname or name
+                'name' => $this->getDisplayName($socialUser, $provider), // Get nickname or name
                 'email' => $socialUser->getEmail(),
+                'avatar' => $socialUser->getAvatar(),
             ]);
             $account->user()->associate($user);
         }
