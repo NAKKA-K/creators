@@ -8,7 +8,10 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <h1 class="mt-4 mb-4 mr-2 user-font">{{ $user->name }}</h1>
+            <h1 class="mt-4 mb-4 mr-2 user-font">
+                <img src="{{ $user->avatar }}" height="50" />
+                {{ $user->name }}
+            </h1>
 
             <!-- tab -->
             <ul class="nav nav-tabs mb-4">
