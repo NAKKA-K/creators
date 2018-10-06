@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('アカウント登録') }}</div>
 
                 <div class="card-body">
+                    @include('shared.oauth_buttons')
+                    <p class="text-center text-muted">or</p>
+
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
 
