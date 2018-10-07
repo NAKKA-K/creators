@@ -19,8 +19,6 @@ class EventsTableSeeder extends Seeder
                 'description' => 'test',
                 'readme' => 'test',
                 'published' => false,
-                'created_at' => time(),
-                'updated_at' => time(),
             ]
         ]);
 
