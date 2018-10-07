@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\URL;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        // Force SSL in production
+        if ($this->app->environment() == 'production') {
+            URL::forceScheme('https');
+        }
+
         DB::listen(function ($query) {
             $sql = $query->sql;
             for ($i = 0; $i < count($query->bindings); $i++) {
