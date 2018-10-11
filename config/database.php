@@ -39,9 +39,15 @@ return [
             'prefix' => '',
         ],
 
-        'test_db' => [
+        'test_memory_db' => [
             'driver' => 'sqlite',
             'database' => ':memory:',
+            'prefix' => '',
+        ],
+
+        'test_db' => [
+            'driver' => 'sqlite',
+            'database' => database_path('test_database.sqlite'),
             'prefix' => '',
         ],
 
