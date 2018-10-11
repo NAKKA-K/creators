@@ -3,6 +3,7 @@
 use Faker\Generator as Faker;
 
 $factory->define(App\Event::class, function (Faker $faker) {
+    $faker = \Faker\Factory::create('ja_JP');
     return [
         'user_id' => $faker->randomDigit() + 1,
         'name' => $faker->sentence($nbWords = 5, $variableNbWords = false),

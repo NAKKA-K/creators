@@ -14,6 +14,7 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(App\User::class, function (Faker $faker) {
+    $faker = \Faker\Factory::create('ja_JP');
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
