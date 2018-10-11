@@ -1,6 +1,6 @@
 .DEFAULT_GOAL := help
 
-.PHONY: help run migrate migrate/fresh c routes
+.PHONY: help run migrate migrate/fresh c routes test
 
 help: Makefile
 	@cat Makefile
@@ -19,3 +19,6 @@ c:
 
 routes:
 	php artisan route:list
+
+test: tests/
+	vendor/bin/phpunit tests/
