@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class EventTest extends TestCase
 {
+    use RefreshDatabase;
+
     /**
      * A basic test example.
      *
