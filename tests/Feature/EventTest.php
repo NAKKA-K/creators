@@ -10,6 +10,15 @@ class EventTest extends TestCase
 {
     use RefreshDatabase;
 
+    public function setUp()
+    {
+        parent::setUp();
+        $user = factory(\App\User::class)->create();
+        $event = factory(\App\Event::class)->create([
+            'user_id' => $user->id
+        ]);
+    }
+
     public function testIndex()
     {
         $this->get('events/')
@@ -25,6 +34,9 @@ class EventTest extends TestCase
     public function testShow()
     {
         $this->get('events/1')
+            ->assertStatus(200);
+
+        $this->get('events/0')
             ->assertStatus(404);
     }
 }
