@@ -62,4 +62,13 @@ class EventTest extends TestCase
             ->assertStatus(200);
     }
 
+    public function testEdit()
+    {
+        $this->get('events/1/edit')
+            ->assertRedirect('login/');
+
+        Auth::login($this->user);
+        $this->get('events/1/edit')
+            ->assertStatus(200);
+    }
 }
