@@ -19,6 +19,7 @@ class EventController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->except(['index', 'show']);
+        $this->middleware('can:destructive,event')->except(['index', 'show', 'create', 'store']);
     }
 
     /**
