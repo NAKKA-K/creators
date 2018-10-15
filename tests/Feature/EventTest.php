@@ -95,6 +95,11 @@ class EventTest extends TestCase
         $this->delete('events/1')
             ->assertRedirect('login');
 
+        $otherUser = factory(\App\User::class)->create();
+        Auth::login($otherUser);
+        $this->delete('events/1')
+            ->assertForbidden();
+
         Auth::login($this->user);
         $this->delete('events/1')
             ->assertRedirect('events');
