@@ -25,17 +25,17 @@ class EventTest extends TestCase
 
     public function testIndex()
     {
-        $this->get('events/')
+        $this->get('events')
             ->assertStatus(200);
     }
 
     public function testCreate()
     {
-        $this->get('events/create/')
-            ->assertRedirect('login/');
+        $this->get('events/create')
+            ->assertRedirect('login');
 
         Auth::login($this->user);
-        $this->get('events/create/')
+        $this->get('events/create')
             ->assertStatus(200);
     }
 
@@ -47,10 +47,12 @@ class EventTest extends TestCase
             'readme' => 'event readme',
         ];
 
-        $this->post('events/', $eventData)->assertRedirect('login/');
+        $this->post('events', $eventData)
+            ->assertRedirect('login');
 
         Auth::login($this->user);
-        $this->post('events/', $eventData)->assertRedirect('events/2');
+        $this->post('events', $eventData)
+            ->assertRedirect('events/2');
     }
 
     public function testShow()
@@ -65,7 +67,7 @@ class EventTest extends TestCase
     public function testEdit()
     {
         $this->get('events/1/edit')
-            ->assertRedirect('login/');
+            ->assertRedirect('login');
 
         Auth::login($this->user);
         $this->get('events/1/edit')
@@ -81,10 +83,20 @@ class EventTest extends TestCase
         ];
 
         $this->put('events/1', $eventData)
-            ->assertRedirect('login/');
+            ->assertRedirect('login');
 
         Auth::login($this->user);
-        $this->put('events/1/', $eventData)
+        $this->put('events/1', $eventData)
             ->assertRedirect('events/1');
+    }
+
+    public function testDestroy()
+    {
+        $this->delete('events/1')
+            ->assertRedirect('login');
+
+        Auth::login($this->user);
+        $this->delete('events/1')
+            ->assertRedirect('events');
     }
 }
