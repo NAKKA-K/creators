@@ -71,4 +71,20 @@ class EventTest extends TestCase
         $this->get('events/1/edit')
             ->assertStatus(200);
     }
+
+    public function testUpdate()
+    {
+        $eventData = [
+            'name' => 'new test event',
+            'description' => 'event new description',
+            'readme' => 'event new readme',
+        ];
+
+        $this->put('events/1', $eventData)
+            ->assertRedirect('login/');
+
+        Auth::login($this->user);
+        $this->put('events/1/', $eventData)
+            ->assertRedirect('events/1');
+    }
 }
