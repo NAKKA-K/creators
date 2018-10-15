@@ -99,7 +99,7 @@ class EventController extends Controller
     {
         $validated = $request->validated();
 
-        Event::where('id', $event->id)->update($validated->all());
+        Event::where('id', $event->id)->update($validated);
         return redirect()->route('events.show', ['event' => $event])->with('イベントを更新しました');
     }
 
