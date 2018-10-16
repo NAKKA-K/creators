@@ -9,7 +9,7 @@
 
     <ul class="service-links">
       <li><a href="{{ route('home.about') }}">WaZとは</a></li>
-      <li><a href="#">ユーザー</a></li>
+      <li><a href="{{ route('users.index') }}">ユーザー</a></li>
       <li><a href="https://nakka-k.hatenablog.com/">開発者ブログ</a></li>
       <li><a href="{{ route('home.opinion') }}">ご意見</a></li>
     </ul>
