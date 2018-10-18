@@ -3,7 +3,8 @@
 .PHONY: help run migrate migrate/fresh c routes test
 
 help: Makefile
-	@cat Makefile
+	@-bat Makefile || \
+	cat Makefile
 
 run:
 	php artisan serve
