@@ -55,7 +55,7 @@ class EventController extends Controller
 
         $event = new Event($validated);
         $event->user_id = Auth::id();
-        $event->published = true;
+        $event->published = $request->input('published', false);
         $event->save();
 
         EventParticipant::create([
@@ -100,7 +100,8 @@ class EventController extends Controller
     {
         $validated = $request->validated();
 
-        Event::where('id', $event->id)->update($validated);
+        Event::where('id', $event->id)
+            ->update($validated + ['published' => $request->input('published', false)]);
         return redirect()->route('events.show', ['event' => $event])->with('イベントを更新しました');
     }
 
