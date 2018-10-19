@@ -40,6 +40,14 @@
                         @errorsBlock($errors->get('readme'))
                     </label>
                 </div>
+                <div class="form-group">
+                    <label class="col-sm-12">
+                        公開
+                        <input type="checkbox" name="published"
+                            class="form-control form-control-lg"
+                            value="true">
+                    </label>
+                </div>
 
                 <div class="float-right">
                     <button type="submit" class="btn btn-primary btn-lg">更新</button>
