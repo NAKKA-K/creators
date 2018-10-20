@@ -11,6 +11,8 @@
             @foreach($events as $event)
                 @include('shared/event_card', ['event' => $event])
             @endforeach
+
+            {!! $events->render() !!}
         </div>
     </div>
 </div>
