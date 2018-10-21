@@ -26,7 +26,7 @@ class CreateEventSkillTagsTable extends Migration
                 ->references('id')->on('skill_tags')
                 ->onDelete('cascade');
 
-            $table->unique(['event_id', 'skill_tag_id'])
+            $table->unique(['event_id', 'skill_tag_id']);
         });
     }
 
