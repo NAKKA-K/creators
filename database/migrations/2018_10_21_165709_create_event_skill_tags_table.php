@@ -15,8 +15,8 @@ class CreateEventSkillTagsTable extends Migration
     {
         Schema::create('event_skill_tag', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsingedInteger('event_id');
-            $table->unsingedInteger('skill_tag_id');
+            $table->unsignedInteger('event_id');
+            $table->unsignedInteger('skill_tag_id');
             $table->timestamps();
 
             $table->foreign('event_id')
