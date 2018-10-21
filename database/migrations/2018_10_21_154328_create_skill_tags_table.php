@@ -15,6 +15,7 @@ class CreateSkillTagsTable extends Migration
     {
         Schema::create('skill_tags', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
