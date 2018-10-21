@@ -17,4 +17,8 @@ class Event extends Model
     public function participants() {
         return $this->hasMany('App\EventParticipant');
     }
+
+    public function skillTags() {
+        return $this->belongsToMany('App\SkillTag');
+    }
 }
