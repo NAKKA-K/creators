@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventSkillTag extends Model
 {
+    protected $table = 'event_skill_tag';
+
     protected $fillable = [
         'event_id', 'skill_tag_id'
     ];
@@ -14,7 +16,7 @@ class EventSkillTag extends Model
         return $this->belongsTo('App\Event');
     }
 
-    public function skill_tag() {
+    public function skillTag() {
         return $this->belongsTo('App\SkillTag');
     }
 }
