@@ -10,7 +10,7 @@ class SkillTag extends Model
         'name',
     ];
 
-    public function eventSkillTags() {
+    public function events() {
         return $this->belongsToMany('App\Event');
     }
 }
