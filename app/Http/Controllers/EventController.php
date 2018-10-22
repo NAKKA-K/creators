@@ -75,7 +75,12 @@ class EventController extends Controller
     public function show(Event $event)
     {
         $num = EventParticipant::where('event_id', $event->id)->count();
-        return view('events.show', ['event' => $event, 'participantNum' => $num]);
+        $eventTags = $event->skillTags;
+        return view('events.show', [
+            'event' => $event,
+            'eventTags' => $eventTags,
+            'participantNum' => $num
+        ]);
     }
 
     /**
