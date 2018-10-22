@@ -24,6 +24,14 @@
                 @endif
             </div>
 
+            <ul class="list-inline">
+                @foreach ($eventTags as $tag)
+                    <li class="list-inline-item">
+                        <a href="#" class="badge badge-primary">{{ $tag->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
+
             @if ($event->published)
                 <p class="text-muted">最終更新日:{{ $event->updated_at }}</p>
             @endif
