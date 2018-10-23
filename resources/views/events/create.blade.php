@@ -42,10 +42,8 @@
 
                 <div class="form-group">
                     <label class="col-sm-12">
-                        タグ
-                        <input type="text" id="event_tags_input" name="tags"
-                            placeholder="ジャンル: web,ゲーム,3DCG等を半角スペース区切り"
-                            class="form-control form-control-lg">
+                        タグ(最大3つ)
+                        <div id="event_tags_input"></div>
                     </label>
                 </div>
 
