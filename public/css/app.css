@@ -10471,3 +10471,44 @@ a.text-dark:focus {
   }
 }
 
+.text-overlay-wrapper {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  display: block;
+  position: relative;
+}
+
+.text-overlay-wrapper .text-overlay {
+  position: absolute;
+  color: transparent;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0.5rem 1rem;
+  font-size: 1.125rem;
+  background-color: white;
+  top: 1px;
+  right: 1px;
+  bottom: 1px;
+  left: 1px;
+}
+
+.text-overlay-wrapper .tag-text {
+  background: transparent;
+  position: relative;
+  outline: 0px;
+}
+
+.tag-highlight {
+  background-color: #D9EAFE;
+}
+
+.invalid-error {
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: #e3342f;
+}
+

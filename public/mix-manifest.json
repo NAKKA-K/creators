@@ -1,8 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
+    "/js/creative.js": "/js/creative.js",
     "/css/app.css": "/css/app.css",
     "/css/footer.css": "/css/footer.css",
     "/css/creative.css": "/css/creative.css",
-    "/css/user_profile_fonts.css": "/css/user_profile_fonts.css",
-    "/js/creative.js": "/js/creative.js"
+    "/css/user_profile_fonts.css": "/css/user_profile_fonts.css"
 }
