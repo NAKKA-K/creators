@@ -53,15 +53,28 @@ class EventController extends Controller
     {
         $validated = $request->validated();
 
+        // limitをeventに付与できるタグの最大個数+1にする事で、無駄な配列を生成しないようにする
+        $textTags = explode(' ', $request->tags, \App\EventSkillTag::EVENT_TAGS_MAX + 1);
+        if(count($textTags) > \App\EventSkillTag::EVENT_TAGS_MAX) {
+            return redirect()->route('events.create')
+                ->with('error', 'イベントに付けられるタグは' . \App\EventSkillTag::EVENT_TAGS_MAX . 'までです');
+        }
+
         $event = new Event($validated);
         $event->user_id = Auth::id();
         $event->published = $request->input('published', false);
         $event->save();
 
+        // event created user join the event.
         EventParticipant::create([
             'event_id' => $event->id,
             'user_id' => Auth::id()
         ]);
+
+        foreach($textTags as $textTag) {
+            $tag = \App\SkillTag::firstOrCreate(['name' => $textTag]);
+            $event->skillTags()->attach($tag);
+        }
 
         return redirect()->route('events.show', ['event' => $event])->with('イベントを作成しました');
     }
