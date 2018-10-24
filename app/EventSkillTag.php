@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class EventSkillTag extends Model
 {
-    protected $table = 'event_skill_tag';
+    public const EVENT_TAGS_MAX = 3;
 
+    protected $table = 'event_skill_tag';
     protected $fillable = [
         'event_id', 'skill_tag_id'
     ];
