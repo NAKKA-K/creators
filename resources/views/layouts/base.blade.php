@@ -44,6 +44,21 @@
         @yield('header')
 
         <main>
+            @if (session()->has('error'))
+                <div class="container mt-4">
+                    <div class="row justify-content-center">
+                        <div class="col-md-8">
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                                <button class="close" data-dismiss="alert" aria-label="close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
             @yield('content')
         </main>
 
