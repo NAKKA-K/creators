@@ -8,11 +8,22 @@
             <a href="{{ route('events.index') }}" class="btn btn-outline-secondary btn-sm">戻る</a>
             <hr>
 
-            <h6 class="mt-4">
-                作成者: <a href="{{ route('users.show', ['user' => $event->user]) }}">{{ $event->user->name }}</a>
-                &nbsp;&nbsp;
-                {{ $event->created_at }}作成
-            </h6>
+            <div class="mt-4 d-flex">
+                <p class="h6 mr-auto">
+                    作成者:&nbsp;<a href="{{ route('users.show', ['user' => $event->user]) }}">{{ $event->user->name }}</a>
+                    &nbsp;&nbsp;
+                    {{ $event->created_at }}作成
+                </p>
+                @if (Auth::check() && Auth::user() == $event->user)
+                    <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn btn-outline-primary btn-sm">
+                        <i class="fa fa-edit fa-lg"></i>
+                    </a>
+                    <button type="submit" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#delete_modal">
+                        <i class="fa fa-trash fa-lg"></i>
+                    </button>
+                @endif
+            </div>
+
 
             <div class="mt-2 mb-2 d-flex flex-row">
                 <h1 class="inline mr-2">{{ $event->name }}</h1>
@@ -24,21 +35,16 @@
                 @endif
             </div>
 
-            <ul class="list-inline">
+            <ul class="list-inline event-tag-list">
                 @foreach ($eventTags as $tag)
                     <li class="list-inline-item">
-                        <a href="#" class="badge badge-primary">{{ $tag->name }}</a>
+                        <a href="#" class="badge badge-secondary">{{ $tag->name }}</a>
                     </li>
                 @endforeach
             </ul>
 
             @if ($event->published)
                 <p class="text-muted">最終更新日:{{ $event->updated_at }}</p>
-            @endif
-
-            @if (Auth::check() && Auth::user() == $event->user)
-                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn btn-primary btn-sm">更新</a>
-                <button type="submit" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_modal">削除</button>
             @endif
 
             <ul class="nav nav-tabs mt-4">
