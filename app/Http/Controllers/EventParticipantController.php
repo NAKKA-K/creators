@@ -36,10 +36,12 @@ class EventParticipantController extends Controller
         if($authUser){
             $joined = $participants->where('user_id', $authUser->id)->first();
         }
+        $eventTags = $event->skillTags;
 
         return view('event_participants.index', [
             'authUser' => $authUser,
             'event' => $event,
+            'eventTags' => $eventTags,
             'participants' => $participants,
             'participantNum' => $participantNum,
             'joined' => $joined,
