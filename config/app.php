@@ -150,7 +150,7 @@ return [
         /*
          * Package Service Providers...
          */
-        Barryvdh\Debugbar\ServiceProvider::class,
+        PercyMamedy\LaravelDevBooter\ServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -213,7 +213,13 @@ return [
         /*
          * Package Service Providers...
          */
-        'Debugbar' => Barryvdh\Debugbar\Facades::class,
     ],
 
+    'dev-providers' => [
+        Barryvdh\Debugbar\ServiceProvider::class,
+    ],
+
+    'dev-aliases' => [
+        'Debugbar' => Barryvdh\Debugbar\Facades::class,
+    ]
 ];
