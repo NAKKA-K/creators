@@ -10,7 +10,8 @@
         "fzaninotto/faker": "^1.8",
         "laravel/framework": "5.7.*",
         "laravel/socialite": "^3.1",
-        "laravel/tinker": "^1.0"
+        "laravel/tinker": "^1.0",
+        "percymamedy/laravel-dev-booter": "^0.2.2"
     },
     "require-dev": {
         "barryvdh/laravel-debugbar": "^3.2",
