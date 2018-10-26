@@ -10512,3 +10512,7 @@ a.text-dark:focus {
   color: #e3342f;
 }
 
+.event-tag-list {
+  font-size: 1.5em;
+}
+
