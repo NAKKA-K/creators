@@ -131,6 +131,7 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
+        \App\EventSkillTag::where('event_id', $event->id)->delete();
         $event->delete();
         return redirect()->route('events.index')->with('イベントを削除しました');
     }
